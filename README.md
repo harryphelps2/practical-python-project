@@ -6,12 +6,16 @@ A game where users play to solve riddles and move on to the next riddle when the
 
 ### Views
 It should present a login view to the player who can enter a username and proceed to the game. 
+
 It should have a second view for playing the game. 
+
 It should have a view of the leaderboard in descending order. 
 
 # Data
 It should have a dictionary of riddles and answers. 
+
 It should store the usernames in a dictionary with a high score. 
+
 It should have a dictionary of guesses with username and timestamp of submission.
 
 ### Functionality
@@ -26,7 +30,15 @@ It should check if the score is higher that the current high score for that user
 If the answer is wrong it should tell the user, store the answer in the answers database with a time stamp and clear the text area for another guess. 
 
 ## Testing
+Test to return true if answer is right and false if wrong.
 
+Test if the score increments by one if the answer is right.
 
+Test to keep the score the same if the answer is wrong.
 
+Test to move onto the next riddle if the answer is correct.
+
+Test to keep on the same riddle if the answer is incorrect.
+
+Test if the score is higher than the current high score and overwrite it if it is.
 
