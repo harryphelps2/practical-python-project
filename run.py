@@ -1,3 +1,9 @@
+import os
+from datetime import datetime
+from flask import Flask,redirect, render_template
+
+app = Flask(__name__)
+
 def is_correct(guess, answer):
     if (answer == guess):
         return True
@@ -11,5 +17,10 @@ def determine_high_score(high_score, new_score):
         high_score = new_score
     return high_score
 
+@app.route('/')
+def index():
+    """Main page with instructions for playing"""
+    return render_template("index.html")
+
 if __name__ == '__main__':
-    main()
+    app.run(debug=True)
