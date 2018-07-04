@@ -1,13 +1,12 @@
 import os
 from datetime import datetime
-from flask import Flask,redirect, render_template
+from flask import Flask, redirect, render_template
 
 app = Flask(__name__)
 
 def is_correct(guess, answer):
     if (answer == guess):
         return True
-
 def increment_score(old_score):
     new_score = old_score =+ 1
     return new_score

@@ -59,4 +59,4 @@ Then
    ```pip install Flask```
 
 4. Then run Flask with 
-```$ python -m flask run```
+```$ FLASK_APP=run.py FLASK_DEBUG=1 flask run```
