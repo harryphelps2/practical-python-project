@@ -1,6 +1,7 @@
 {
-    "\"dad\"": 0,
-    "dad": 0,
-    "harry": 0,
-    "mum": 0
+    "cat": 2,
+    "dad": 1,
+    "dog": 0,
+    "foo": 2,
+    "mammoth": 3
 }
