@@ -30,6 +30,9 @@ It should check if the score is higher that the current high score for that user
 If the answer is wrong it should tell the user, store the answer in the answers database with a time stamp and clear the text area for another guess. 
 
 ## Testing
+
+### Automatic tests in text suite
+
 Test to return true if answer is right and false if wrong. 
 
 Test if the score increments by one if the answer is right.
@@ -41,6 +44,10 @@ Test to move onto the next riddle if the answer is correct.
 Test to keep on the same riddle if the answer is incorrect.
 
 Test if the score is higher than the current high score and overwrite it if it is.
+
+### Manual tests
+
+Execute write to file function to check it writes to a file and appends new line to the end of the file.
 
 ## Getting set up
 1. Install python3
