@@ -1,4 +1,5 @@
 import os
+import json
 from datetime import datetime
 from flask import Flask, redirect, render_template, request
 
@@ -22,24 +23,39 @@ def determine_high_score(high_score, new_score):
         high_score = new_score
     return high_score
 
+def submit_guess(score, guess, answer):
+    if request.method == 'POST':
+        if is_correct(guess, answer):
+            increment_score(score)
+        else:
+            print("incorrect")
+    return score
+
+def add_user(username):
+    with open("data/users.txt", "r") as f:
+        users = json.loads(f.read())
+        users[username] = 0
+    with open("data/users.txt", "w") as f:
+        f.write(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')))
+    
+    
 @app.route('/', methods=['GET', 'POST'])
 def index():
-    """Main page with instructions for playing"""
+    """Main page with instructions for playing redirects to username url"""
     if request.method == "POST":
-        write_to_file("data/users",request.form["username"]+"\n")
-        return redirect(request.form["username"])
+        username = request.form["username"]
+        add_user(username)
+        return redirect(username)
     return render_template("index.html")
 
 @app.route('/<username>', methods=['GET', 'POST'])
-def user(username):
-    """riddles.html allows you to guess, displays guesses and keeps track of score"""
-    if request.method == "POST":
-        write_to_file("data/guesses","{0} guessed {1} at {2}".format(
-            username,
-            request.form["guess"],
-            datetime.now().strftime("%H:%M:%S"))
-            +"\n")
-    return render_template("riddles.html")
+def playgame(username):
+    with open("data/users.txt", "r") as f:
+        users = json.loads(f.read())
+    score = users[username]
+    with open("data/riddles.json", "r") as riddles_data:
+        riddles = json.load(riddles_data)
+    return render_template("riddles.html", riddles=riddles, score=score)
 
 if __name__ == '__main__':
     app.run(debug=True)
