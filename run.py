@@ -30,5 +30,9 @@ def index():
         return redirect(request.form["username"])
     return render_template("index.html")
 
+@app.route('/<username>', methods=['GET', 'POST'])
+def user(username):
+    return render_template("riddles.html")
+
 if __name__ == '__main__':
     app.run(debug=True)
