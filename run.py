@@ -37,8 +37,6 @@ def update_score(username, score):
     with open("data/users.txt", "r+") as f:
         users = json.loads(f.read())
         users[username] = score
-    #maybe this is happening outside the other functiom? let's put them into one with r+ or w+
-    #maybe reading from the cursor so can't update
     with open("data/users.txt", "w+") as f:
         f.write(json.dumps(users, sort_keys=True, indent=4, separators=(',', ': ')))
     return score
@@ -57,12 +55,9 @@ def playgame(username):
     with open("data/users.txt", "r") as f:
         users = json.loads(f.read())
         score = users[username]
-    print(score)
     with open("data/riddles.json", "r") as riddles_data:
         riddles = json.load(riddles_data)
     if request.method == "POST":
-        #when we set the high score to 2 it goes back to 1
-        #think maybe the score is setting back to 0 and incerasing by 1 each time
         submit_guess(username, score, request.form["guess"], "5")
         return redirect(username)
     return render_template("riddles.html", riddles=riddles, score=score)

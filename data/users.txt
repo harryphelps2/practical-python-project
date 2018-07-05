@@ -1,7 +1,10 @@
 {
+    "bob": 0,
     "cat": 2,
     "dad": 1,
     "dog": 0,
+    "fee": 0,
     "foo": 2,
+    "haxxa": 2,
     "mammoth": 3
 }
