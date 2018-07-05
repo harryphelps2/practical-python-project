@@ -36,7 +36,7 @@ def add_user(username):
         users = json.loads(f.read())
         users[username] = 0
     with open("data/users.txt", "w") as f:
-        f.write(json.dumps(data, sort_keys=True, indent=4, separators=(',', ': ')))
+        f.write(json.dumps(users, sort_keys=True, indent=4, separators=(',', ': ')))
     
     
 @app.route('/', methods=['GET', 'POST'])
