@@ -32,6 +32,13 @@ def index():
 
 @app.route('/<username>', methods=['GET', 'POST'])
 def user(username):
+    """riddles.html allows you to guess, displays guesses and keeps track of score"""
+    if request.method == "POST":
+        write_to_file("data/guesses","{0} guessed {1} at {2}".format(
+            username,
+            request.form["guess"],
+            datetime.now().strftime("%H:%M:%S"))
+            +"\n")
     return render_template("riddles.html")
 
 if __name__ == '__main__':
