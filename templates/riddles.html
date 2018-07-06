@@ -11,8 +11,10 @@
     <input type="text" id="guess" name="guess">
 </form>
 <div>
-    <h4>Incorrect guesses:</h4>
-        {% for guess in guesses %}
+    <h4>Wall of Shame:</h4>
+    {% for guess, question_number in guesses.items() %}
+        {% if question_number == score %}
             <p>{{ guess }}</p>
-        {% endfor %}
+        {% endif %}
+    {% endfor %}
 </div>

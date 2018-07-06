@@ -70,7 +70,7 @@ def playgame(username):
         users = json.loads(f.read())
         score = users[username]
     with open("data/guesses.txt", "r") as guesses:
-        guesses = guesses.readlines()
+        guesses = json.loads(guesses.read())
     with open("data/riddles.json", "r") as riddles_data:
         riddles = json.load(riddles_data)
     answer = get_answer(score, riddles)
