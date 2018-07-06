@@ -24,8 +24,8 @@ def submit_guess(username, score, guess, answer):
         increment_score(username, score)
     else:
         timestamp = datetime.now().strftime("%H:%M:%S")
-        incorrect_answer = "{0} incorrectly guessed {1} at {2}... shame\n".format(username, guess, timestamp)
-        write_to_file("data/guesses.txt", incorrect_answer)
+        incorrect_guess = "{0} incorrectly guessed {1} at {2}... shame".format(username, guess, timestamp)
+        update_guesses(incorrect_guess, score)
     return score
 
 def add_user(username):
@@ -42,6 +42,13 @@ def update_score(username, score):
     with open("data/users.txt", "w+") as f:
         f.write(json.dumps(users, sort_keys=True, indent=4, separators=(',', ': ')))
     return score
+
+def update_guesses(incorrect_guess, score):
+    with open("data/guesses.txt", "r") as f:
+        users = json.loads(f.read())
+        users.update({incorrect_guess : score})
+    with open("data/guesses.txt", "w+") as f:
+        f.write(json.dumps(users, sort_keys=True, indent=4, separators=(',', ': ')))
 
 def get_answer(score, riddles):
     for question in riddles:
