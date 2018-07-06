@@ -81,7 +81,12 @@ def playgame(username):
     if score < number_of_riddles:
         return render_template("riddles.html", riddles=riddles, score=score, guesses=guesses)
     else:
-        return redirect('/leaderboard')
+        return redirect('/completed')
+
+
+@app.route('/completed')
+def completed():
+    return render_template("completed.html")
 
 @app.route('/leaderboard')
 def leaderboard():
