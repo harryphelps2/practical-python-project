@@ -1,6 +1,11 @@
 {
     "ben": "0",
+    "bobbo": "3",
     "bobstar": "3",
     "bobstar4": "4",
-    "dad": "3"
+    "dad": "3",
+    "harry": "1",
+    "hazza": "3",
+    "louis": "3",
+    "mum": "3"
 }

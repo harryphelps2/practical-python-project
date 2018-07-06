@@ -17,5 +17,8 @@
     "jerry incorrectly guessed 1 at 10:38:16... shame": 0,
     "jerry incorrectly guessed 1 at 10:44:33... shame": 2,
     "jerry incorrectly guessed 5 at 10:21:03... shame": 0,
-    "jerry incorrectly guessed 9 at 10:25:51... shame": 0
+    "jerry incorrectly guessed 9 at 10:25:51... shame": 0,
+    "louis incorrectly guessed  at 11:39:28... shame": 3,
+    "louis incorrectly guessed 1 at 11:39:18... shame": 0,
+    "mum incorrectly guessed  at 11:40:41... shame": 3
 }

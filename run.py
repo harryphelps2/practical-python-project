@@ -73,11 +73,15 @@ def playgame(username):
         guesses = json.loads(guesses.read())
     with open("data/riddles.json", "r") as riddles_data:
         riddles = json.load(riddles_data)
+        number_of_riddles = len(riddles)
     answer = get_answer(score, riddles)
     if request.method == "POST":
         submit_guess(username, score, request.form["guess"], answer)
         return redirect(username)
-    return render_template("riddles.html", riddles=riddles, score=score, guesses=guesses)
+    if score < number_of_riddles:
+        return render_template("riddles.html", riddles=riddles, score=score, guesses=guesses)
+    else:
+        return redirect('/leaderboard')
 
 @app.route('/leaderboard')
 def leaderboard():
