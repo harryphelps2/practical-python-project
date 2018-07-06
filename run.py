@@ -24,7 +24,7 @@ def submit_guess(username, score, guess, answer):
         increment_score(username, score)
     else:
         timestamp = datetime.now().strftime("%H:%M:%S")
-        incorrect_answer = "{0} guessed {1} at {2}\n".format(username, guess, timestamp)
+        incorrect_answer = "{0} incorrectly guessed {1} at {2}... shame... shame ... shame\n".format(username, guess, timestamp)
         write_to_file("data/guesses.txt", incorrect_answer)
     return score
 
