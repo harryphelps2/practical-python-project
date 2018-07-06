@@ -24,7 +24,7 @@ def submit_guess(username, score, guess, answer):
         increment_score(username, score)
     else:
         timestamp = datetime.now().strftime("%H:%M:%S")
-        incorrect_answer = "{0} incorrectly guessed {1} at {2}... shame... shame ... shame\n".format(username, guess, timestamp)
+        incorrect_answer = "{0} incorrectly guessed {1} at {2}... shame\n".format(username, guess, timestamp)
         write_to_file("data/guesses.txt", incorrect_answer)
     return score
 
@@ -62,13 +62,15 @@ def playgame(username):
     with open("data/users.txt", "r") as f:
         users = json.loads(f.read())
         score = users[username]
+    with open("data/guesses.txt", "r") as guesses:
+        guesses = guesses.readlines()
     with open("data/riddles.json", "r") as riddles_data:
         riddles = json.load(riddles_data)
     answer = get_answer(score, riddles)
     if request.method == "POST":
         submit_guess(username, score, request.form["guess"], answer)
         return redirect(username)
-    return render_template("riddles.html", riddles=riddles, score=score)
+    return render_template("riddles.html", riddles=riddles, score=score, guesses=guesses)
 
 if __name__ == '__main__':
     app.run(debug=True)

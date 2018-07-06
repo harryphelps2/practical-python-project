@@ -12,4 +12,7 @@
 </form>
 <div>
     <h4>Incorrect guesses:</h4>
+        {% for guess in guesses %}
+            <p>{{ guess }}</p>
+        {% endfor %}
 </div>
