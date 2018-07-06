@@ -41,6 +41,11 @@ def update_score(username, score):
         f.write(json.dumps(users, sort_keys=True, indent=4, separators=(',', ': ')))
     return score
 
+def get_answer(score, riddles):
+    for question in riddles:
+        if question['index'] == score:
+            return question['answer']
+
 @app.route('/', methods=['GET', 'POST'])
 def index():
     """Main page with instructions for playing redirects to username url"""
@@ -57,8 +62,9 @@ def playgame(username):
         score = users[username]
     with open("data/riddles.json", "r") as riddles_data:
         riddles = json.load(riddles_data)
+    answer = get_answer(score, riddles)
     if request.method == "POST":
-        submit_guess(username, score, request.form["guess"], "5")
+        submit_guess(username, score, request.form["guess"], answer)
         return redirect(username)
     return render_template("riddles.html", riddles=riddles, score=score)
 

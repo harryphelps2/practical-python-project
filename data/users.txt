@@ -6,5 +6,6 @@
     "fee": 0,
     "foo": 2,
     "haxxa": 2,
+    "luke": 3,
     "mammoth": 3
 }
