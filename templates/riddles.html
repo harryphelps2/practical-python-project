@@ -1,6 +1,10 @@
 <h1>Answer me these riddles three</h1>
 <div>
-    <h3>{{ riddles[score] }}</h3>
+    {% for riddle in riddles %}
+        {% if riddle.index == score %}
+            <h3>Question {{ loop.index }}: {{ riddle.question }}</h3>
+        {% endif %}
+    {% endfor %}
 </div>
 <form method="POST">
     <label for="guess">Guess here:</label>

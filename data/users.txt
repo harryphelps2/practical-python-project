@@ -2,10 +2,16 @@
     "bob": 0,
     "cat": 2,
     "dad": 1,
+    "dea": 3,
     "dog": 0,
+    "duke": 3,
+    "faa": 3,
     "fee": 0,
     "foo": 2,
     "haxxa": 2,
     "luke": 3,
-    "mammoth": 3
+    "mammoth": 3,
+    "nicole": 2,
+    "paa": 2,
+    "tessa": 3
 }
