@@ -38,7 +38,7 @@ def add_user(username):
 def update_score(username, score):
     with open("data/users.txt", "r+") as f:
         users = json.loads(f.read())
-        users[username] = score
+        users[username] = str(score)
     with open("data/users.txt", "w+") as f:
         f.write(json.dumps(users, sort_keys=True, indent=4, separators=(',', ': ')))
     return score
@@ -68,7 +68,7 @@ def index():
 def playgame(username):
     with open("data/users.txt", "r") as f:
         users = json.loads(f.read())
-        score = users[username]
+        score = int(users[username])
     with open("data/guesses.txt", "r") as guesses:
         guesses = json.loads(guesses.read())
     with open("data/riddles.json", "r") as riddles_data:
