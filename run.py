@@ -79,5 +79,11 @@ def playgame(username):
         return redirect(username)
     return render_template("riddles.html", riddles=riddles, score=score, guesses=guesses)
 
+@app.route('/leaderboard')
+def leaderboard():
+    with open("data/users.txt", "r") as f:
+        users = json.loads(f.read())
+    return render_template("leaderboard.html", users=users)
+
 if __name__ == '__main__':
     app.run(debug=True)

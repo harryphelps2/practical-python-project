@@ -1,19 +1,5 @@
 {
-    "bob": 0,
-    "bobstar": 3,
-    "cat": 2,
-    "dad": 1,
-    "dea": 3,
-    "dog": 0,
-    "duke": 3,
-    "faa": 3,
-    "fee": 0,
-    "foo": 2,
-    "haxxa": 2,
-    "jerry": 3,
-    "luke": 3,
-    "mammoth": 3,
-    "nicole": 2,
-    "paa": 2,
-    "tessa": 3
+    "ben": "0",
+    "bobstar": "3",
+    "bobstar2": "4"
 }
