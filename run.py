@@ -50,6 +50,17 @@ def update_guesses(incorrect_guess, score):
     with open("data/guesses.txt", "w+") as f:
         f.write(json.dumps(users, sort_keys=True, indent=4, separators=(',', ': ')))
 
+def update_leaderboard(users, number_of_riddles):
+    leaderboard_list = []
+    for i in range(number_of_riddles,-1,-1):
+        for key, value in users.items():
+            if int(value) == i:
+                """Let's append this to an empty list and print the whole list at the end"""
+                user_highscore = "{0} {1}\n".format(key, value)
+                leaderboard_list.append(user_highscore)
+                with open("data/leaderboard.txt", "w") as leaderboard:
+                    leaderboard.writelines(leaderboard_list)
+
 def get_answer(score, riddles):
     for question in riddles:
         if question['index'] == score:
@@ -77,6 +88,7 @@ def playgame(username):
     answer = get_answer(score, riddles)
     if request.method == "POST":
         submit_guess(username, score, request.form["guess"], answer)
+        update_leaderboard(users, number_of_riddles)
         return redirect(username)
     if score < number_of_riddles:
         return render_template("riddles.html", riddles=riddles, score=score, guesses=guesses)
@@ -90,9 +102,9 @@ def completed():
 
 @app.route('/leaderboard')
 def leaderboard():
-    with open("data/users.txt", "r") as f:
-        users = json.loads(f.read())
-    return render_template("leaderboard.html", users=users)
+    with open("data/leaderboard.txt", "r") as f:
+        leaderboard = f.read()
+    return render_template("leaderboard.html", leaderboard = leaderboard)
 
 if __name__ == '__main__':
     app.run(debug=True)

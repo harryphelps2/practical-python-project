@@ -13,5 +13,40 @@
         "index" : 2,  
         "question" : "4 + 4",
         "answer" : "8"
+    },
+    {
+        "index" : 3,  
+        "question" : "7 x 48",
+        "answer" : "336"
+    },
+    {
+        "index" : 4,  
+        "question" : "10 x 1",
+        "answer" : "10"
+    },
+    {
+        "index" : 5,  
+        "question" : "7 x 28",        
+        "answer" : "196"
+    },
+    {
+        "index" : 6,  
+        "question" : "2 x 139,231",
+        "answer" : "278462"        
+    },
+    {
+        "index" : 7,  
+        "question" : "8 x 4",
+        "answer" : "32"
+    },
+    {
+        "index" : 8,  
+        "question" : "561 x 10",
+        "answer" : "5610"        
+    },
+    {
+        "index" : 9,  
+        "question" : "3 x 3",
+        "answer" : "9"
     }
 ]

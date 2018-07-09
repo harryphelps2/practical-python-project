@@ -9,12 +9,7 @@
                     <td>Username</td>
                     <td>High Score</td>
                 </th>
-                {% for user, score in users.items() %}
-                <tr>
-                    <td>{{ user }}</td>
-                    <td>{{ score }}</td>
-                </tr>
-                {% endfor %}
+                {{ leaderboard }}
             </table>
     </body>
 </html>

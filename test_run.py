@@ -1,5 +1,8 @@
 import unittest
 import run
+from flask import Flask, redirect, render_template, request
+import os
+import tempfile
 
 class TestRiddle(unittest.TestCase):
     """
@@ -16,6 +19,14 @@ class TestRiddle(unittest.TestCase):
         username = "Harry"
         new_score = run.increment_score(username, 2)
         self.assertEqual(new_score, 3)
+    
+    def test_order_leaderboard(self):
+        """Test to order users dictionary by score value to 
+        display on leaderboard"""
+        users = {'a' : '1', 'b' : '4', 'c' : '7'}
+        ordered_leaderboard = run.order_leaderboard(users)
+        leaderboard = { 'c' : '7', 'b' : '4', 'a' : '1'}
+        self.assertEqual(ordered_leaderboard, leaderboard)
 
 if __name__ == '__main__':
     unittest.main()
