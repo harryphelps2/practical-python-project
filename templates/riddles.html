@@ -1,20 +1,21 @@
-<h1>Answer me these riddles three</h1>
-<div>
-    {% for riddle in riddles %}
-        {% if riddle.index == score %}
-            <h3>Question {{ loop.index }}: {{ riddle.question }}</h3>
-        {% endif %}
-    {% endfor %}
-</div>
-<form method="POST">
-    <label for="guess">Guess here:</label>
-    <input type="text" id="guess" name="guess">
-</form>
-<div>
-    <h4>Wall of Shame:</h4>
-    {% for guess, question_number in guesses.items() %}
-        {% if question_number == score %}
-            <p>{{ guess }}</p>
-        {% endif %}
-    {% endfor %}
-</div>
+{% extends 'base.html' %} {% block content %}
+    <div>
+        {% for riddle in riddles %}
+            {% if riddle.index == score %}
+                <h3>Question {{ loop.index }}: {{ riddle.question }}</h3>
+            {% endif %}
+        {% endfor %}
+    </div>
+    <form method="POST">
+        <label for="guess">Guess here:</label>
+        <input type="text" id="guess" name="guess">
+    </form>
+    <div>
+        <h4>Wall of Shame:</h4>
+        {% for guess, question_number in guesses.items() %}
+            {% if question_number == score %}
+                <p>{{ guess }}</p>
+            {% endif %}
+        {% endfor %}
+    </div>
+{% endblock %}
