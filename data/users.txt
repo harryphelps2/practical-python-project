@@ -4,15 +4,21 @@
     "bobbo": "3",
     "bobstar": "3",
     "bobstar4": "4",
+    "cat": 0,
     "dad": "3",
+    "diary": 0,
     "h dawg": 0,
+    "hacter": 0,
     "harry": "1",
     "hazza": "3",
+    "hcat": 0,
     "hdawg": "6",
     "john": "3",
     "louis": "3",
     "louise": "10",
     "loulou": "10",
     "lucas": "3",
-    "mum": "3"
+    "mum": "3",
+    "siddy": "1",
+    "wouwou": "3"
 }
