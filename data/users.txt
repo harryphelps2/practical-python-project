@@ -1,5 +1,5 @@
 {
-    "Harry": "3",
+    "Harry": 0,
     "ben": "0",
     "bobbo": "3",
     "bobstar": "3",

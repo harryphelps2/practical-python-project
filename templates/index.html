@@ -1,13 +1,23 @@
 {% extends 'base.html' %} {% block content %}
-    <div>
-        <h1>Mental Maths Challenge</h1>
+    <div class="row">
+        <div class="col-md-auto">
+            <h1>Mental Maths Challenge</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-auto">
+            <p class="username">Enter username below to enter the challenge:</p>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-auto">
+            <form method="POST">
+                <label for="username">Username:</label>
+                <input type="text" id="username" name="username">
+            </form>
+        </div>
     </div>
     <div>
-        <h2>Enter username below to enter the challenge:</h2>
-        <form method="POST">
-            <label for="username">Username:</label>
-            <input type="text" id="username" name="username">
-            <button>Take the challenge</button>
-        </form>
+        <button type="button" class="btn btn-outline-success">Take the challenge</button>
     </div>
 {% endblock %}
