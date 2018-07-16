@@ -1,0 +1,19 @@
+.banner {
+    background-color: blue;
+    padding: 0.5rem;
+    h1 {
+        color: white;
+        margin: 0 auto;
+    }
+}
+.container:first-child {
+    padding-top: 5rem;
+}
+.question {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+.shamewall {
+    padding-top: 1.0rem;
+}
