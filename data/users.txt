@@ -12,6 +12,7 @@
     "h dawg": 0,
     "hacter": 0,
     "harry": 0,
+    "hazz": "10",
     "hazza": "3",
     "hazzaPEA": 0,
     "hcat": 0,

@@ -12,6 +12,7 @@ html, body {
   top: 0;
   height: 100%;
   width: 100%;
+  z-index: 1;
 }
 
 .banner {
@@ -51,6 +52,7 @@ html, body {
 .completed button {
   width: 30%;
   margin-top: 5%;
+  z-index: 2;
 }
 .completed button a {
   color: inherit;
