@@ -5,6 +5,7 @@ html, body {
     height: 100%;
     width: 100%;
 }
+
 #confetti{
     position: absolute;
     left: 0;
@@ -12,22 +13,48 @@ html, body {
     height: 100%;
     width: 100%;
 }
+
 .banner {
     background-color: blue;
     padding: 0.5rem;
+
     h1 {
         color: white;
         margin: 0 auto;
     }
 }
+
 .container:first-child {
     padding-top: 5rem;
 }
+
 .question {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
 }
+
 .shamewall {
     padding-top: 1.0rem;
+}
+
+.completed {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+
+    h1 {
+        text-align: center;
+    }
+
+    button {
+        width: 30%;
+        margin-top: 5%;
+        a {
+            color: inherit;
+        }
+    }
 }

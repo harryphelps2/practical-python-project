@@ -37,4 +37,23 @@ html, body {
   padding-top: 1rem;
 }
 
+.completed {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+.completed h1 {
+  text-align: center;
+}
+.completed button {
+  width: 30%;
+  margin-top: 5%;
+}
+.completed button a {
+  color: inherit;
+}
+
 /*# sourceMappingURL=styles.css.map */
