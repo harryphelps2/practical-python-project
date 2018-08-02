@@ -1,6 +1,8 @@
 {% extends 'base.html' %} {% block content %}
     <div>
         <h1>Leaderboard</h1>
-        <pre>{{ leaderboard }}</pre>
+        {% for user in leaderboard %}
+        <p>{{ user }}</p>
+        {% endfor %}
     </div>
 {% endblock %}

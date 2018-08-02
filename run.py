@@ -50,30 +50,6 @@ def update_guesses(incorrect_guess, score):
     with open("data/guesses.txt", "w+") as f:
         f.write(json.dumps(users, sort_keys=True, indent=4, separators=(',', ': ')))
 
-# def update_leaderboard(username, score):
-#     with open("data/users.txt", "r+") as f:
-#         users = json.loads(f.read())
-#         leaderboard = []
-#         for user, value in users.items():
-#             username = user
-#             score = value
-#             leaderboard.update({ score : username })
-#         return (leaderboard)
-#     with open("data/leaderboard.txt", "w") as f:
-#         f.write(leaderboard)
-#     return score
-
-# def update_leaderboard(users, number_of_riddles):
-#     leaderboard_list = []
-#     for i in range(number_of_riddles,-1,-1):
-#         for key, value in users.items():
-#             if int(value) == i:
-#                 """Let's append this to an empty list and print the whole list at the end"""
-#                 user_highscore = "[{0}, {1}],\n".format(key, value)
-#                 leaderboard_list.append(user_highscore)
-#                 with open("data/leaderboard.txt", "w") as leaderboard:
-#                     leaderboard.writelines(leaderboard_list)
-
 def update_leaderboard(users, number_of_riddles):
     leaderboard_list = []
     for i in range(number_of_riddles,-1,-1):
@@ -119,29 +95,16 @@ def playgame(username):
     else:
         return redirect('/completed')
 
-
 @app.route('/completed')
 def completed():
     return render_template("completed.html")
 
 @app.route('/leaderboard')
 def leaderboard():
-    with open("data/leaderboard.txt", "r") as f:
-        """
-        Can't load the list in as a data dictionary because python json.loads can't do multiple dictionaries
-        what now?
-        Can we just swap the keys and values round in a new dictionary and print it out?
-        Could try and print out as dictionary in write to leaderboard section
-        """
-        leaderboard = f.read()
+    leaderboard = [line.rstrip('\n') for line in open('data/leaderboard.txt')]
+    print(leaderboard)
     return render_template("leaderboard.html", leaderboard=leaderboard)
-
-
-    """
-        with open("data/users.txt", "r") as f:
-        users = json.loads(f.read())
-    return render_template("leaderboard.html", users=users)
-    """
 
 if __name__ == '__main__':
     app.run(debug=True)
+

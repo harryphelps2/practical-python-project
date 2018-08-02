@@ -1,6 +1,7 @@
+hazz: 10
 louise: 10
 loulou: 10
-hazz: 9
+dad1: 9
 hdawg: 6
 bobstar4: 4
 bobbo: 3
