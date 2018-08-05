@@ -23,10 +23,8 @@
     "john": "3",
     "louis": "3",
     "louise": "10",
-    "loulou": "10",
-    "lucas": "3",
-    "mammoth": "3",
     "mum": "3",
     "siddy": "1",
+    "test": "2",
     "wouwou": "3"
 }

@@ -11,13 +11,15 @@ def write_to_file(filename, data):
         file.writelines(data)
 
 def is_correct(guess, answer):
+    """Return True if the answer is equal to the guess"""
     if (answer == guess):
         return True
 
 def increment_score(username, score):
-    new_score = score + 1
-    update_score(username, new_score)
-    return new_score
+    """Increment score by one"""
+    score += 1
+    update_score(username, score)
+    return score
 
 def submit_guess(username, score, guess, answer):
     if is_correct(guess, answer):
@@ -61,8 +63,8 @@ def update_leaderboard(users, number_of_riddles):
                 with open("data/leaderboard.txt", "w") as leaderboard:
                     leaderboard.writelines(leaderboard_list)
 
-def get_answer(score, riddles):
-    for question in riddles:
+def get_answer(score, questions):
+    for question in questions:
         if question['index'] == score:
             return question['answer']
 
@@ -82,16 +84,16 @@ def playgame(username):
         score = int(users[username])
     with open("data/guesses.txt", "r") as guesses:
         guesses = json.loads(guesses.read())
-    with open("data/riddles.json", "r") as riddles_data:
-        riddles = json.load(riddles_data)
-        number_of_riddles = len(riddles)
-    answer = get_answer(score, riddles)
+    with open("data/questions.json", "r") as questions_data:
+        questions = json.load(questions_data)
+        number_of_questions = len(questions)
+    answer = get_answer(score, questions)
     if request.method == "POST":
         submit_guess(username, score, request.form["guess"], answer)
-        update_leaderboard(users, number_of_riddles)
+        update_leaderboard(users, number_of_questions)
         return redirect(username)
-    if score < number_of_riddles:
-        return render_template("riddles.html", riddles=riddles, score=score, guesses=guesses)
+    if score < number_of_questions:
+        return render_template("question.html", questions=questions, score=score, guesses=guesses)
     else:
         return redirect('/completed')
 
