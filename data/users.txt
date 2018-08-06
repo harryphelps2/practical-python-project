@@ -25,6 +25,9 @@
     "louise": "10",
     "mum": "3",
     "siddy": "1",
-    "test": "2",
+    "test": "3",
+    "test2": "4",
+    "test3": "2",
+    "test4": "1",
     "wouwou": "3"
 }

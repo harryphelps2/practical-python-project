@@ -5,10 +5,16 @@ from flask import Flask, redirect, render_template, request, url_for
 
 app = Flask(__name__)
 
-def write_to_file(filename, data):
-    """Write data to a file"""
-    with open(filename, "a") as file:
-        file.writelines(data)
+#Filepaths
+guesses_file_path = "data/guesses.txt"
+leaderboard_file_path = "data/leaderboard.txt"
+questions_file_path = "data/questions.json"
+users_file_path = "data/users.txt"
+    
+def read_file(filepath):
+    """Read data from file"""
+    with open(filepath, "r") as f:
+        return json.loads(f.read())
 
 def is_correct(guess, answer):
     """Return True if the answer is equal to the guess"""
@@ -18,46 +24,32 @@ def is_correct(guess, answer):
 def increment_score(username, score):
     """Increment score by one"""
     score += 1
-    update_score(username, score)
-    return score
-
-def submit_guess(username, score, guess, answer):
-    if is_correct(guess, answer):
-        increment_score(username, score)
-    else:
-        timestamp = datetime.now().strftime("%H:%M:%S")
-        incorrect_guess = "{0} incorrectly guessed {1} at {2}... shame".format(username, guess, timestamp)
-        update_guesses(incorrect_guess, score)
     return score
 
 def add_user(username):
-    with open("data/users.txt", "r") as f:
-        users = json.loads(f.read())
-        users[username] = 0
+    users = read_file(users_file_path)
+    users[username] = 0
     with open("data/users.txt", "w") as f:
         f.write(json.dumps(users, sort_keys=True, indent=4, separators=(',', ': ')))
 
 def update_score(username, score):
-    with open("data/users.txt", "r+") as f:
-        users = json.loads(f.read())
-        users[username] = str(score)
+    users = read_file(users_file_path)
+    users[username] = str(score)
     with open("data/users.txt", "w+") as f:
         f.write(json.dumps(users, sort_keys=True, indent=4, separators=(',', ': ')))
     return score
 
-def update_guesses(incorrect_guess, score):
-    with open("data/guesses.txt", "r") as f:
-        users = json.loads(f.read())
-        users.update({incorrect_guess : score})
+def update_incorrect_guesses(incorrect_guess, score):
+    users = read_file(users_file_path)
+    users.update({incorrect_guess : score})
     with open("data/guesses.txt", "w+") as f:
         f.write(json.dumps(users, sort_keys=True, indent=4, separators=(',', ': ')))
 
-def update_leaderboard(users, number_of_riddles):
+def update_leaderboard(users, number_of_questions):
     leaderboard_list = []
-    for i in range(number_of_riddles,-1,-1):
+    for i in range(number_of_questions,-1,-1):
         for key, value in users.items():
             if int(value) == i:
-                """Let's append this to an empty list and print the whole list at the end"""
                 user_highscore = "{0}: {1}\n".format(key, value)
                 leaderboard_list.append(user_highscore)
                 with open("data/leaderboard.txt", "w") as leaderboard:
@@ -79,21 +71,25 @@ def index():
 
 @app.route('/<username>', methods=['GET', 'POST'])
 def playgame(username):
-    with open("data/users.txt", "r") as f:
-        users = json.loads(f.read())
-        score = int(users[username])
-    with open("data/guesses.txt", "r") as guesses:
-        guesses = json.loads(guesses.read())
-    with open("data/questions.json", "r") as questions_data:
-        questions = json.load(questions_data)
-        number_of_questions = len(questions)
+    users = read_file(users_file_path)
+    score = int(users[username])
+    questions = read_file(questions_file_path)
     answer = get_answer(score, questions)
+    incorrect_guesses = read_file(guesses_file_path)
+    number_of_questions = len(questions)
     if request.method == "POST":
-        submit_guess(username, score, request.form["guess"], answer)
-        update_leaderboard(users, number_of_questions)
+        guess = request.form["guess"]
+        if is_correct(guess, answer):
+            score = increment_score(username, score)
+            update_score(username, score)
+            update_leaderboard(users, number_of_questions)
+        else:
+            timestamp = datetime.now().strftime("%H:%M:%S")
+            incorrect_guess = "{0} incorrectly guessed {1} at {2}... shame".format(username, guess, timestamp)
+            update_incorrect_guesses(incorrect_guess, score)
         return redirect(username)
     if score < number_of_questions:
-        return render_template("question.html", questions=questions, score=score, guesses=guesses)
+        return render_template("question.html", questions=questions, score=score, guesses=incorrect_guesses)
     else:
         return redirect('/completed')
 
