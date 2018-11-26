@@ -23,6 +23,10 @@ html, body {
   color: white;
   margin: 0 auto;
 }
+.banner h1 a {
+  text-decoration: none;
+  color: white;
+}
 
 .container:first-child {
   padding-top: 5rem;
