@@ -4,6 +4,7 @@ from datetime import datetime
 from flask import Flask, redirect, render_template, request, url_for
 
 app = Flask(__name__)
+app.secret_key = 'some_secret'
 
 #Filepaths
 guesses_file_path = "data/guesses.txt"
@@ -104,5 +105,6 @@ def leaderboard():
     return render_template("leaderboard.html", leaderboard=leaderboard)
 
 if __name__ == '__main__':
-    app.run(debug=True)
-
+    app.run(host=os.environ.get('IP'),
+            port=int(os.environ.get('PORT')),
+            debug=True)
