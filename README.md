@@ -2,7 +2,7 @@
 
 Link to live site: https://mental-maths-hp.herokuapp.com/
 
-A game where users play to solve riddles and move on to the next riddle when they guess correctly. The app will keep a record of high scores for each user, and display other users who have answered incorrectly on each question.
+A game where users play to solve mental maths questions and progress through the game when they guess correctly. The app will keep a record of high scores for each user, and display other users who have answered incorrectly on each question on a Wall of Shame.
 
 ## UX
  
