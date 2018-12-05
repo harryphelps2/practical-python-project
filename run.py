@@ -4,7 +4,6 @@ from datetime import datetime
 from flask import Flask, redirect, render_template, request, url_for
 
 app = Flask(__name__)
-app.secret_key = 'some_secret'
 
 #Filepaths
 guesses_file_path = "data/guesses.txt"

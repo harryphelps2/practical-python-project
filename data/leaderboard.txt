@@ -1,7 +1,7 @@
+Harry: 10
 dad1: 10
 hazz: 10
 louise: 10
-Harry: 9
 hdawg: 6
 bobstar4: 4
 test2: 4
@@ -16,12 +16,14 @@ test: 3
 wouwou: 3
 joe: 2
 test3: 2
+HARRY: 1
 siddy: 1
 test4: 1
 Hazz: 0
 ben: 0
 bob: 0
 cat: 0
+dhvbn: 0
 diary: 0
 h dawg: 0
 hacter: 0
